@@ -11,18 +11,18 @@ Use this workflow to commit and push working changes.
 // turbo
 1. Check git status:
 ```bash
-cd /Users/caitlineverett/dev/seethru.media && git status --short
+cd /Users/caitlineverett/dev/seethru.media/core && git status --short
 ```
 
 2. If there are changes, create a descriptive commit:
 ```bash
-cd /Users/caitlineverett/dev/seethru.media && git add -A && git commit -m "[describe what changed]"
+cd /Users/caitlineverett/dev/seethru.media/core && git add -A && git commit -m "[describe what changed]"
 ```
 
 // turbo
 3. Push to origin:
 ```bash
-cd /Users/caitlineverett/dev/seethru.media && git push
+cd /Users/caitlineverett/dev/seethru.media/core && git push
 ```
 
 ## Notes
