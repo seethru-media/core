@@ -1,5 +1,8 @@
 # seethru.media
 
+> **Version 0.1.0** — Initial Scaffold  
+> **Date:** 2025-12-28
+
 **A trust-first news platform.** No outrage optimization. No hidden algorithms. No cookies.
 
 ---
@@ -76,15 +79,16 @@ We believe platform governance should be as transparent as the content.
 | [Funding Registry](./docs/FUNDING_REGISTRY.md) | Who funds us |
 | [Amendment Process](./docs/AMENDMENT_PROCESS.md) | How rules change |
 
-## Status
-
-🚧 **Early Development** — We're building in public. Expect rough edges.
+## Status (v0.1.0)
 
 - [x] Monorepo scaffold
-- [x] Design system
-- [x] Content schemas
-- [x] Governance docs
-- [ ] Content loading
+- [x] Design system (tokens, components)
+- [x] Content schemas (Zod)
+- [x] Governance docs (12 documents)
+- [x] Astro web app (zero JS by default)
+- [x] Next.js author/admin apps
+- [x] Low-bandwidth mode
+- [ ] Dynamic content loading
 - [ ] User accounts
 - [ ] Jury system
 - [ ] Live deployment
@@ -92,8 +96,6 @@ We believe platform governance should be as transparent as the content.
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md).
-
-Before contributing code, please understand our governance. We're building something different, and that requires alignment on principles.
 
 ## License
 

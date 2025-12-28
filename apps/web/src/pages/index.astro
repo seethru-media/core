@@ -15,11 +15,27 @@ interface Section {
   posts: Post[];
 }
 
-// Geographic daily brief - hardcoded for now, will be dynamic
+// Geographic daily brief - sample content for now
 const sections: Section[] = [
-  { name: 'Your Area', posts: [] },
-  { name: 'National', posts: [] },
-  { name: 'World', posts: [] },
+  {
+    name: 'Your Area',
+    posts: [],
+  },
+  {
+    name: 'National',
+    posts: [
+      {
+        slug: 'sample-post',
+        title: 'Welcome to seethru.media',
+        author: 'seethru.media',
+        date: new Date('2025-12-28'),
+      },
+    ],
+  },
+  {
+    name: 'World',
+    posts: [],
+  },
 ];
 ---
 

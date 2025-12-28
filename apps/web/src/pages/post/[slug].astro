@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Attribution from '../../components/Attribution.astro';
+
+// Get slug from URL
+export function getStaticPaths() {
+  // For now, return empty - will be populated with content
+  // In production, this will load from content collection
+  return [{ params: { slug: 'sample-post' } }];
+}
+
+const { slug } = Astro.params;
+
+// Sample post data - will be replaced with actual content loading
+const post = {
+  title: 'Welcome to seethru.media',
+  subtitle: 'A trust-first news platform',
+  author: 'seethru.media',
+  authorUrl: '/',
+  date: new Date('2025-12-28'),
+  content: `
+    <p>This is a sample post demonstrating the platform.</p>
+    <p>seethru.media is built on principles of:</p>
+    <ul>
+      <li>Radical transparency</li>
+      <li>No outrage optimization</li>
+      <li>Geographic daily briefs</li>
+      <li>Fair creator compensation</li>
+    </ul>
+    <p>Read our Trust Principles to learn more.</p>
+  `,
+  aiDisclosure: 'none' as const,
+};
+---
+
+<BaseLayout title={post.title}>
+  <article>
+    <header style="margin-bottom: var(--space-6);">
+      <h1 style="font-size: 2rem; line-height: 1.2; margin-bottom: var(--space-2);">
+        {post.title}
+      </h1>
+      {
+        post.subtitle && (
+          <p style="font-size: 1.25rem; color: var(--color-text-muted);">{post.subtitle}</p>
+        )
+      }
+      <div style="margin-top: var(--space-4);">
+        <Attribution
+          author={post.author}
+          authorUrl={post.authorUrl}
+          date={post.date}
+          source="seethru.media"
+          aiDisclosure={post.aiDisclosure}
+        />
+      </div>
+    </header>
+
+    <div class="content" set:html={post.content} />
+
+    <footer
+      style="margin-top: var(--space-8); padding-top: var(--space-4); border-top: 1px solid var(--color-border, #ddd);"
+    >
+      <a href="/" style="color: var(--color-primary);">← Back to Daily Brief</a>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  .content {
+    line-height: 1.7;
+  }
+
+  .content p {
+    margin-bottom: 1rem;
+  }
+
+  .content ul,
+  .content ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .content li {
+    margin-bottom: 0.5rem;
+  }
+</style>

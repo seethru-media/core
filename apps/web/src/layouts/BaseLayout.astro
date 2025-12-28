@@ -3,6 +3,8 @@
  * Base Layout
  * Zero JavaScript by default - the McMaster-Carr way
  */
+import LowBandwidthToggle from '../components/LowBandwidthToggle.astro';
+
 interface Props {
   title: string;
   description?: string;
@@ -18,7 +20,7 @@ const { title, description = 'seethru.media - Transparent News' } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title} | seethru.media</title>
-    
+
     <!-- Inline critical CSS for fastest paint -->
     <style is:inline>
       :root {
@@ -28,43 +30,80 @@ const { title, description = 'seethru.media - Transparent News' } = Astro.props;
         --color-surface: hsl(0, 0%, 100%);
         --color-text: hsl(0, 0%, 10%);
         --color-text-muted: hsl(0, 0%, 40%);
-        --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        --color-border: hsl(0, 0%, 88%);
+        --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        --space-2: 0.5rem;
+        --space-3: 0.75rem;
         --space-4: 1rem;
         --space-6: 1.5rem;
         --space-8: 2rem;
       }
-      
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-      
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
       body {
         font-family: var(--font-sans);
         color: var(--color-text);
         background: var(--color-surface);
         line-height: 1.6;
       }
-      
+
       .container {
         max-width: 720px;
         margin: 0 auto;
         padding: var(--space-4);
       }
+
+      /* Low-bandwidth mode: hide images, simplify layout */
+      body.low-bandwidth img,
+      body.low-bandwidth video,
+      body.low-bandwidth iframe {
+        display: none !important;
+      }
+
+      body.low-bandwidth * {
+        animation: none !important;
+        transition: none !important;
+      }
     </style>
   </head>
   <body>
-    <header class="container">
-      <nav>
-        <a href="/">seethru.media</a>
+    <header
+      class="container"
+      style="border-bottom: 1px solid var(--color-border); margin-bottom: var(--space-4);"
+    >
+      <nav
+        style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-2) 0;"
+      >
+        <a href="/" style="font-weight: 600; text-decoration: none; color: inherit;"
+          >seethru.media</a
+        >
+        <span style="font-size: 0.875rem; color: var(--color-text-muted);"
+          >No cookies. No tracking.</span
+        >
       </nav>
     </header>
-    
+
     <main class="container">
       <slot />
     </main>
-    
-    <footer class="container">
-      <p style="color: var(--color-text-muted); font-size: 0.875rem;">
-        Transparent news. No cookies. No tracking.
-      </p>
+
+    <footer
+      class="container"
+      style="margin-top: var(--space-8); padding-top: var(--space-4); border-top: 1px solid var(--color-border);"
+    >
+      <div
+        style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--space-4);"
+      >
+        <p style="color: var(--color-text-muted); font-size: 0.875rem;">
+          Transparent news. <a href="/about" style="color: var(--color-primary);">Learn more</a>
+        </p>
+        <LowBandwidthToggle />
+      </div>
     </footer>
   </body>
 </html>

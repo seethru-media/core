@@ -1,0 +1,63 @@
+---
+/**
+ * Low-Bandwidth Toggle
+ * Allows users to switch to text-only mode
+ * Per Platform Charter: Accessible in low-bandwidth environments
+ *
+ * Uses localStorage but ONLY when user explicitly opts in
+ */
+---
+
+<div class="low-bandwidth-toggle">
+  <label>
+    <input type="checkbox" id="low-bandwidth-toggle" aria-describedby="low-bandwidth-desc" />
+    <span>Low-bandwidth mode</span>
+  </label>
+  <p id="low-bandwidth-desc" class="toggle-desc">Text-only. Faster loading. Less data.</p>
+</div>
+
+<style>
+  .low-bandwidth-toggle {
+    padding: var(--space-3, 0.75rem);
+    background: var(--color-surface-elevated, #f5f5f5);
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+
+  .low-bandwidth-toggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+  .toggle-desc {
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--color-text-muted, #666);
+  }
+</style>
+
+<script>
+  // Minimal JS - only runs if user interacts
+  const toggle = document.getElementById('low-bandwidth-toggle') as HTMLInputElement;
+
+  // Check saved preference (only localStorage, no cookies)
+  if (toggle && typeof localStorage !== 'undefined') {
+    const saved = localStorage.getItem('seethru-low-bandwidth');
+    if (saved === 'true') {
+      toggle.checked = true;
+      document.body.classList.add('low-bandwidth');
+    }
+
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+        localStorage.setItem('seethru-low-bandwidth', 'true');
+        document.body.classList.add('low-bandwidth');
+      } else {
+        localStorage.removeItem('seethru-low-bandwidth');
+        document.body.classList.remove('low-bandwidth');
+      }
+    });
+  }
+</script>
