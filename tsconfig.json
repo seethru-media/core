@@ -1,0 +1,50 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "compilerOptions": {
+        "target": "ES2022",
+        "lib": [
+            "ES2022",
+            "DOM",
+            "DOM.Iterable"
+        ],
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "strict": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "incremental": true,
+        "paths": {
+            "@seethru/design-system": [
+                "./packages/design-system/src"
+            ],
+            "@seethru/content-schema": [
+                "./packages/content-schema/src"
+            ],
+            "@seethru/attribution": [
+                "./packages/attribution/src"
+            ],
+            "@seethru/syndication": [
+                "./packages/syndication/src"
+            ],
+            "@seethru/moderation": [
+                "./packages/moderation/src"
+            ],
+            "@seethru/messaging": [
+                "./packages/messaging/src"
+            ],
+            "@seethru/search": [
+                "./packages/search/src"
+            ],
+            "@seethru/config/*": [
+                "./packages/config/*"
+            ]
+        }
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}

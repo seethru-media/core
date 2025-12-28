@@ -1,0 +1,20 @@
+{
+    "extends": "astro/tsconfigs/strict",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ],
+            "@seethru/design-system": [
+                "../../packages/design-system/src"
+            ],
+            "@seethru/content-schema": [
+                "../../packages/content-schema/src"
+            ],
+            "@seethru/attribution": [
+                "../../packages/attribution/src"
+            ]
+        }
+    }
+}

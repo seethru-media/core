@@ -1,0 +1,106 @@
+/* ===========================================
+   seethru.media Design Tokens
+   CSS Custom Properties for the Utilitarian Stack
+   =========================================== */
+
+:root {
+  /* ===== Colors (HSL Semantic Tokens) ===== */
+  
+  /* Primary - can be overridden by subdomain themes */
+  --hue-primary: 210;
+  --saturation-primary: 80%;
+  --color-primary: hsl(var(--hue-primary), var(--saturation-primary), 50%);
+  --color-primary-hover: hsl(var(--hue-primary), var(--saturation-primary), 40%);
+  --color-primary-light: hsl(var(--hue-primary), var(--saturation-primary), 95%);
+  
+  /* Surfaces */
+  --color-surface: hsl(0, 0%, 100%);
+  --color-surface-elevated: hsl(0, 0%, 98%);
+  --color-surface-sunken: hsl(0, 0%, 96%);
+  
+  /* Text */
+  --color-text: hsl(0, 0%, 10%);
+  --color-text-muted: hsl(0, 0%, 40%);
+  --color-text-inverted: hsl(0, 0%, 100%);
+  
+  /* Borders */
+  --color-border: hsl(0, 0%, 88%);
+  --color-border-focus: var(--color-primary);
+  
+  /* Semantic */
+  --color-success: hsl(142, 70%, 45%);
+  --color-warning: hsl(38, 92%, 50%);
+  --color-error: hsl(0, 84%, 60%);
+  --color-info: hsl(210, 80%, 55%);
+  
+  /* ===== Typography ===== */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* ===== Spacing (4px base) ===== */
+  --space-0: 0;
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  
+  /* ===== Border Radius ===== */
+  --radius-none: 0;
+  --radius-sm: 0.25rem;   /* 4px */
+  --radius-md: 0.5rem;    /* 8px */
+  --radius-lg: 1rem;      /* 16px */
+  --radius-full: 9999px;
+  
+  /* ===== Shadows ===== */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  
+  /* ===== Transitions ===== */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+  
+  /* ===== Z-Index ===== */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-modal: 1030;
+  --z-tooltip: 1040;
+}
+
+/* ===== Dark Mode ===== */
+[data-theme="dark"] {
+  --color-surface: hsl(0, 0%, 10%);
+  --color-surface-elevated: hsl(0, 0%, 15%);
+  --color-surface-sunken: hsl(0, 0%, 8%);
+  
+  --color-text: hsl(0, 0%, 95%);
+  --color-text-muted: hsl(0, 0%, 60%);
+  
+  --color-border: hsl(0, 0%, 25%);
+}

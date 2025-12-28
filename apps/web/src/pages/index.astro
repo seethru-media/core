@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Attribution from '../components/Attribution.astro';
+
+// Post type for display
+interface Post {
+  slug: string;
+  title: string;
+  author: string;
+  date: Date;
+}
+
+interface Section {
+  name: string;
+  posts: Post[];
+}
+
+// Geographic daily brief - hardcoded for now, will be dynamic
+const sections: Section[] = [
+  { name: 'Your Area', posts: [] },
+  { name: 'National', posts: [] },
+  { name: 'World', posts: [] },
+];
+---
+
+<BaseLayout title="Daily Brief">
+  <h1>Your Daily Brief</h1>
+  <p style="color: var(--color-text-muted); margin-bottom: var(--space-6);">
+    News organized by geography, not engagement.
+  </p>
+
+  {
+    sections.map((section) => (
+      <section style="margin-bottom: var(--space-8);">
+        <h2 style="font-size: 1.25rem; margin-bottom: var(--space-4);">{section.name}</h2>
+
+        {section.posts.length === 0 ? (
+          <p style="color: var(--color-text-muted); font-style: italic;">
+            No stories yet. Check back soon.
+          </p>
+        ) : (
+          <ul style="list-style: none;">
+            {section.posts.map((post) => (
+              <li style="margin-bottom: var(--space-4);">
+                <a href={`/post/${post.slug}`}>{post.title}</a>
+                <Attribution author={post.author} date={post.date} source="seethru.media" />
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    ))
+  }
+
+  <aside
+    style="margin-top: var(--space-8); padding: var(--space-4); background: var(--color-surface-elevated, #f5f5f5); border-radius: 8px;"
+  >
+    <h3 style="font-size: 1rem; margin-bottom: var(--space-2);">Welcome to seethru.media</h3>
+    <p style="font-size: 0.875rem; color: var(--color-text-muted);">
+      This is a trust-first news platform. No cookies, no tracking, no outrage optimization.
+      <a href="/about">Learn more →</a>
+    </p>
+  </aside>
+</BaseLayout>
