@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Not Found">
+  <div style="text-align: center; padding: var(--space-8) 0;">
+    <h1
+      style="font-size: 4rem; font-weight: 700; color: var(--color-text-muted); margin-bottom: var(--space-4);"
+    >
+      404
+    </h1>
+    <h2 style="margin-bottom: var(--space-4);">Page not found</h2>
+    <p style="margin-bottom: var(--space-6); color: var(--color-text-muted);">
+      The page you are looking for doesn't exist.
+    </p>
+    <a
+      href="/"
+      class="btn btn-primary"
+      style="display: inline-block; padding: var(--space-3) var(--space-4); background: var(--color-primary); color: white; text-decoration: none; border-radius: 8px;"
+    >
+      Go Home
+    </a>
+  </div>
+</BaseLayout>
