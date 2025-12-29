@@ -1,80 +1,310 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Attribution from '../components/Attribution.astro';
 
-// Post type for display
-interface Post {
-  slug: string;
-  title: string;
-  author: string;
-  date: Date;
-}
+/**
+ * seethru.media Landing Page
+ * A public-facing page explaining the project and inviting contribution
+ */
 
-interface Section {
-  name: string;
-  posts: Post[];
-}
-
-// Geographic daily brief - sample content for now
-const sections: Section[] = [
-  {
-    name: 'Your Area',
-    posts: [],
-  },
-  {
-    name: 'National',
-    posts: [
-      {
-        slug: 'sample-post',
-        title: 'Welcome to seethru.media',
-        author: 'seethru.media',
-        date: new Date('2025-12-28'),
-      },
-    ],
-  },
-  {
-    name: 'World',
-    posts: [],
-  },
+const statusItems = [
+  { text: 'Monorepo scaffold', done: true },
+  { text: 'Design system', done: true },
+  { text: 'Content schemas', done: true },
+  { text: 'Governance docs', done: true },
+  { text: 'Content loading', done: false },
+  { text: 'User accounts', done: false },
+  { text: 'Jury system', done: false },
+  { text: 'Live deployment', done: false },
 ];
 ---
 
-<BaseLayout title="Daily Brief">
-  <h1>Your Daily Brief</h1>
-  <p style="color: var(--color-text-muted); margin-bottom: var(--space-6);">
-    News organized by geography, not engagement.
-  </p>
+<BaseLayout
+  title="Building in Public"
+  description="seethru.media - A trust-first news platform built in the open"
+>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>seethru.media</h1>
+    <p class="tagline">A trust-first news platform. Built in the open.</p>
+    <p class="intro">
+      No outrage optimization. No hidden algorithms. No cookies.
+      <br />
+      Just transparent journalism infrastructure.
+    </p>
+  </section>
 
-  {
-    sections.map((section) => (
-      <section style="margin-bottom: var(--space-8);">
-        <h2 style="font-size: 1.25rem; margin-bottom: var(--space-4);">{section.name}</h2>
+  <!-- About Section -->
+  <section class="section">
+    <h2>What is this?</h2>
+    <p>
+      Hi! I'm an individual building open-source journalism infrastructure. If you've found this
+      page, you probably share my frustration with how modern news platforms work — the engagement
+      farming, the opaque moderation, the tracking.
+    </p>
+    <p>
+      <strong>seethru.media</strong> is my attempt to build something different: a news platform where
+      the algorithms are public, the moderation is visible, and privacy is the default.
+    </p>
+  </section>
 
-        {section.posts.length === 0 ? (
-          <p style="color: var(--color-text-muted); font-style: italic;">
-            No stories yet. Check back soon.
-          </p>
-        ) : (
-          <ul style="list-style: none;">
-            {section.posts.map((post) => (
-              <li style="margin-bottom: var(--space-4);">
-                <a href={`/post/${post.slug}`}>{post.title}</a>
-                <Attribution author={post.author} date={post.date} source="seethru.media" />
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-    ))
+  <!-- Current Status -->
+  <section class="section">
+    <h2>Current Status</h2>
+    <p class="muted">🚧 Early Development — Building in public, expect rough edges.</p>
+    <ul class="status-list">
+      {
+        statusItems.map((item) => (
+          <li class={item.done ? 'done' : 'pending'}>
+            <span class="check">{item.done ? '✓' : '○'}</span>
+            {item.text}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- Contribute Section -->
+  <section class="section card">
+    <h2>🤝 Contribute</h2>
+    <p>
+      This is open source. If you're interested in transparent news infrastructure, I'd love your
+      help.
+    </p>
+    <div class="button-group">
+      <a
+        href="https://github.com/seethru-media/seethru.media"
+        class="btn btn-primary"
+        target="_blank"
+        rel="noopener"
+      >
+        View on GitHub →
+      </a>
+      <a
+        href="https://github.com/seethru-media/seethru.media/blob/main/core/CONTRIBUTING.md"
+        class="btn btn-secondary"
+        target="_blank"
+        rel="noopener"
+      >
+        Contributing Guide
+      </a>
+    </div>
+  </section>
+
+  <!-- Support Section -->
+  <section class="section card">
+    <h2>💚 Support</h2>
+    <p>
+      Building this takes time. If you believe in transparent journalism infrastructure, consider
+      supporting the project.
+    </p>
+    <div class="button-group">
+      <a
+        href="https://www.paypal.com/donate/?hosted_button_id=WAPR2287XN5JJ"
+        class="btn btn-support"
+        target="_blank"
+        rel="noopener"
+      >
+        Donate via PayPal
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section card">
+    <h2>📬 Get in Touch</h2>
+    <p>Questions, ideas, or just want to say hi?</p>
+    <div class="button-group">
+      <a href="mailto:projects@seethru.media" class="btn btn-primary">
+        Email projects@seethru.media
+      </a>
+    </div>
+  </section>
+
+  <!-- Links -->
+  <section class="section">
+    <h2>Related Projects</h2>
+    <ul class="link-list">
+      <li>
+        <a href="https://github.com/seethru-media/diagram.garden" target="_blank" rel="noopener">
+          diagram.garden
+        </a>
+        <span class="muted">— Visual learning experiments</span>
+      </li>
+      <li>
+        <a href="https://github.com/seethru-media/chron.monster" target="_blank" rel="noopener">
+          chron.monster
+        </a>
+        <span class="muted">— Coming soon</span>
+      </li>
+      <li>
+        <a href="https://github.com/seethru-media/silly.digital" target="_blank" rel="noopener">
+          silly.digital
+        </a>
+        <span class="muted">— Coming soon</span>
+      </li>
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: var(--space-8) 0;
+    margin-bottom: var(--space-6);
   }
 
-  <aside
-    style="margin-top: var(--space-8); padding: var(--space-4); background: var(--color-surface-elevated, #f5f5f5); border-radius: 8px;"
-  >
-    <h3 style="font-size: 1rem; margin-bottom: var(--space-2);">Welcome to seethru.media</h3>
-    <p style="font-size: 0.875rem; color: var(--color-text-muted);">
-      This is a trust-first news platform. No cookies, no tracking, no outrage optimization.
-      <a href="/about">Learn more →</a>
-    </p>
-  </aside>
-</BaseLayout>
+  .hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+    background: linear-gradient(135deg, var(--color-primary), hsl(260, 80%, 60%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tagline {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+  }
+
+  .intro {
+    color: var(--color-text-muted);
+    line-height: 1.8;
+  }
+
+  .section {
+    margin-bottom: var(--space-8);
+  }
+
+  .section h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .section p {
+    margin-bottom: var(--space-3);
+    color: var(--color-text);
+  }
+
+  .muted {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+  }
+
+  .card {
+    background: hsl(var(--hue-primary), 20%, 97%);
+    padding: var(--space-6);
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+  }
+
+  .status-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+  }
+
+  .status-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.9rem;
+  }
+
+  .status-list li.done {
+    color: var(--color-text);
+  }
+
+  .status-list li.pending {
+    color: var(--color-text-muted);
+  }
+
+  .check {
+    font-size: 0.875rem;
+  }
+
+  li.done .check {
+    color: hsl(140, 60%, 40%);
+  }
+
+  .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+
+  .btn {
+    display: inline-block;
+    padding: var(--space-3) var(--space-4);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .btn-secondary {
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-support {
+    background: hsl(340, 70%, 55%);
+    color: white;
+  }
+
+  .link-list {
+    list-style: none;
+    margin-top: var(--space-4);
+  }
+
+  .link-list li {
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .link-list li:last-child {
+    border-bottom: none;
+  }
+
+  .link-list a {
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+    }
+
+    .button-group {
+      flex-direction: column;
+    }
+
+    .btn {
+      text-align: center;
+    }
+  }
+</style>
