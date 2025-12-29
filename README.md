@@ -69,6 +69,7 @@ We believe platform governance should be as transparent as the content.
 
 | Document | What It Covers |
 |---|---|
+| **[The Platform Charter](./docs/CHARTER.md)** | **Constitutional foundation** |
 | [Trust Principles](./docs/TRUST_PRINCIPLES.md) | Our commitments to readers |
 | [Moderation Guidelines](./docs/MODERATION_GUIDELINES.md) | How we handle content |
 | [Ombudsman](./docs/OMBUDSMAN.md) | Independent oversight |
