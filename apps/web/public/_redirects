@@ -1,0 +1,7 @@
+# Force 404 for legacy paths
+/dmbentley.com/*  /404  404
+
+# Catch-all for other non-existent paths (optional, but good for static sites)
+# If a file exists, it is served. If not, this rule applies.
+# However, Astro 404.html usually handles this automatically.
+# We only strictly need the above line to ensure NO spa fallback happened for legacy paths.
